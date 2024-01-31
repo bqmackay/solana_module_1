@@ -21,7 +21,7 @@ console.log(`suppliedToPubkey: ${suppliedToPubkey}`);
 
 const toPubkey = new PublicKey(suppliedToPubkey)
 
-const connection = new Connection("https://api.dotenv.solana.com", "confirmed")
+const connection = new Connection("https://api.devnet.solana.com", "confirmed")
 
 console.log(`✅ Loaded our own keypair, the destination public key, and connected to Solana`)
 
@@ -34,7 +34,7 @@ const sendSolInstruction = SystemProgram.transfer({
 })
 
 transaction.add(sendSolInstruction)
-console.log("here")
+
 const signature = await sendAndConfirmTransaction(connection, transaction, [senderKeypair])
 
 console.log(`💸 Finished! Sent ${LAMPORTS_TO_SEND} to the address ${toPubkey}.`)
